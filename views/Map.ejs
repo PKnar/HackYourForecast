@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="../public/css/navigation.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+    <link rel="stylesheet" type="text/css" href="../public/css/map.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fa fa-bars" 'fa-2x'></i>
+            </span>
+            <a href="/" class="logo">logo</a>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="/" class="nav-links">Home</a>
+                </li>
+                <li>
+                    <a href="/weather" class="nav-links">Weather</a>
+                </li>
+                <li>
+                    <a href="/api" class="nav-links">API</a>
+                </li>
+                <li>
+                    <a href="/map" class="nav-links" id='clicked'>Map</a>
+                </li>
+                <li>
+                    <a href="/npm" class="nav-links">NPM package</a>
+                </li>
+                <li>
+                    <a href="/contributors" class="nav-links">Contributors</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class='bg'> </div>
+    <h3>Cities we cover</h3>
+    <div id="mapid"></div>
+    <div class='bg'> </div>
+    <script>
+        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGVvbmlkYXMwMDAwIiwiYSI6ImNqbjJja2JqZjI1MGczcXF2eWF3YXB1bWwifQ.-FRhZ4uSDN9TnhzwvQ7cgw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibGVvbmlkYXMwMDAwIiwiYSI6ImNqbjJja2JqZjI1MGczcXF2eWF3YXB1bWwifQ.-FRhZ4uSDN9TnhzwvQ7cgw'
+        }).addTo(mymap);
+
+        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+        mymap.on('click', onMapClick);
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(mymap);
+        }
+
+        mymap.on('click', onMapClick);
+    </script>
+    <script>
+        let mainNav = document.getElementById('js-menu');
+        let navBarToggle = document.getElementById('js-navbar-toggle');
+
+        navBarToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('active');
+
+        });
+    </script>
+
+</body>
+
+</html>

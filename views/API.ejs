@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="../public/css/api.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/navigation.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fa fa-bars" 'fa-2x'></i>
+            </span>
+            <a href='/' class='logo'>Logo</a>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="/" class="nav-links">Home</a>
+                </li>
+                <li>
+                    <a href="/weather" class="nav-links">Weather</a>
+                </li>
+                <li>
+                    <a href="/api" class="nav-links" id='clicked'>API</a>
+                </li>
+                <li>
+                    <a href="/map" class="nav-links">Map</a>
+                </li>
+                <li>
+                    <a href="/npm" class="nav-links">NPM package</a>
+                </li>
+                <li>
+                    <a href="/contributors" class="nav-links">Contributors</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class='bg'> </div>
+    <section class='api-paragraph'>
+        <h2>Why would a weather API benefit you?</h2>
+        <p> Our weather API provides a simple way for developers and programmers to embed weather data into their apps and websites.
+            They are free for personal as well as commercial use depending on how you wish to use weather API. It could be
+            for a blog, website or smartphone application. Regardless of your requirements, programmers and developers all
+            over the world are benefitting from our weather API software.
+        </p>
+    </section>
+    <div class='bg'> </div>
+
+    <script>
+        let mainNav = document.getElementById('js-menu');
+        let navBarToggle = document.getElementById('js-navbar-toggle');
+
+        navBarToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('active');
+
+        });
+    </script>
+</body>
+
+</html>
